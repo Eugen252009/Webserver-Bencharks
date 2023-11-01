@@ -13,6 +13,7 @@ func main() {
 
 func echo(w http.ResponseWriter, r *http.Request) {
 	body, err := io.ReadAll(r.Body)
+	defer r.Body.Close()
 	if err != nil {
 		panic("konnte Body nicht lesen")
 	}
